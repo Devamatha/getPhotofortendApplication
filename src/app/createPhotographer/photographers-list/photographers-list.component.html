@@ -1,0 +1,189 @@
+<div class="card">
+    <p-table [value]="viewDataOfphotographer" #dt2 dataKey="photographer_Id" [paginator]="true" [rows]="5"
+        [showCurrentPageReport]="true" editMode="row"
+        currentPageReportTemplate="showing{first}to{last}of {totalRecords}entries" [rowsPerPageOptions]="[5,10,20]"
+        [tableStyle]="{ 'min-width': '25rem'}">
+        <ng-template pTemplate="caption">
+            <div class="p-input-icon-left flex">
+                    <i class="pi pi-search"></i>
+                    <input pInputText type="text" [(ngModel)]="searchText" style="width: 100%; margin: 10px auto"
+                        (input)="overAllSerach()" />
+
+            </div>
+        </ng-template>
+        <ng-template pTemplate="header">
+            <tr class="headerDetails">
+                <th style="width:25%">S.N</th>
+                <th pSortableColumn="fullName" style="width:25%">Full Name<p-sortIcon field="fullName"></p-sortIcon>
+                </th>
+                <th pSortableColumn="email" style="width:25%">Email<p-sortIcon field="email"></p-sortIcon></th>
+                <th pSortableColumn="mobileNumber" style="width:25%">Mobile Number<p-sortIcon
+                        field="mobileNumber"></p-sortIcon></th>
+                <th pSortableColumn="password" style="width:25%">Password<p-sortIcon field="password"></p-sortIcon></th>
+                <th pSortableColumn="registrationDate" style="width:25%">Registration Date<p-sortIcon
+                    field="registrationDate"></p-sortIcon></th>
+                <th pSortableColumn="totalImages" style="width:25%">Total Images<p-sortIcon
+                        field="totalImages"></p-sortIcon></th>
+                        
+                            <th pSortableColumn="subcriptionPlan" style="width:25%">Subcription Plan<p-sortIcon
+                                field="subcriptionPlan"></p-sortIcon></th>
+                <th>Action</th>
+            </tr>
+            <tr>
+                <th></th>
+                <th>
+                    <span class="p-input-icon-left ml-auto">
+                        <i class="pi pi-search"></i>
+                        <input pInputText type="text" [(ngModel)]="searchFullName" (input)="filterFullName()" />
+                    </span>
+                </th>
+                <th>
+                    <span class="p-input-icon-left ml-auto">
+                        <i class="pi pi-search"></i>
+                        <input pInputText type="text" [(ngModel)]="searchEmail" (input)="filterEmail()" />
+                    </span>
+                </th>
+                <th>
+                    <span class="p-input-icon-left ml-auto">
+                        <i class="pi pi-search"></i>
+                        <input pInputText type="text" [(ngModel)]="searhMobileNumber" (input)="filterMobileNumber()" />
+                    </span>
+                </th>
+                <th>
+                    <span class="p-input-icon-left ml-auto">
+                        <i class="pi pi-search"></i>
+                        <input pInputText type="text" [(ngModel)]="searhPassword" (input)="filterPassword()" />
+                    </span>
+                </th>
+
+                <th>
+                    <span class="p-input-icon-left ml-auto">
+                        <i class="pi pi-search"></i>
+                        <input pInputText type="text" [(ngModel)]="searchDate" (input)="filterDate()" />
+                    </span>
+                </th>
+                <th>
+                    <span class="p-input-icon-left ml-auto">
+                        <i class="pi pi-search"></i>
+                        <input pInputText type="text" [(ngModel)]="searchtotalImages" (input)="filtertotalImages()" />
+                    </span>
+                </th>
+                <th>
+                    <span class="p-input-icon-left ml-auto">
+                        <i class="pi pi-search"></i>
+                        <input pInputText type="text" [(ngModel)]="searchsubcriptionPlan" (input)="filtersubcriptionPlan()" />
+                    </span>
+                </th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-viewDataOfphotographer let-i="rowIndex" let-editing="editing"
+            let-ri="rowIndex">
+
+            <tr [pEditableRow]="viewDataOfphotographer" [formGroup]="editForm"
+                (click)="toggleSubItems(viewDataOfphotographer)">
+                <td>{{i+1}}</td>
+                <td>
+                    <!-- {{viewDataOfphotographer.fullName}} -->
+                    <p-cellEditor>
+                        <ng-template pTemplate="input">
+                            <input pInputText type="text" formControlName="fullName">
+                        </ng-template>
+                        <ng-template pTemplate="output">
+                            {{viewDataOfphotographer.fullName}}
+                        </ng-template>
+                    </p-cellEditor>
+                </td>
+                <td>
+                    <!-- {{viewDataOfphotographer.email}} -->
+                    <p-cellEditor>
+                        <ng-template pTemplate="input">
+                            <input pInputText type="text" formControlName="email" required>
+                        </ng-template>
+                        <ng-template pTemplate="output">
+                            {{viewDataOfphotographer.email}}
+                        </ng-template>
+                    </p-cellEditor>
+                </td>
+                <td>
+                    <!-- {{viewDataOfphotographer.mobileNumber}} -->
+                    <p-cellEditor>
+                        <ng-template pTemplate="input">
+                            <input pInputText type="text" formControlName="mobileNumber" required>
+                        </ng-template>
+                        <ng-template pTemplate="output">
+                            {{viewDataOfphotographer.mobileNumber}}
+                        </ng-template>
+                    </p-cellEditor>
+                </td>
+                <td>
+                    <!-- {{viewDataOfphotographer.password}} -->
+                    <p-cellEditor>
+                        <ng-template pTemplate="input">
+                            <input pInputText type="text" formControlName="password" required>
+                        </ng-template>
+                        <ng-template pTemplate="output">
+                            {{viewDataOfphotographer.password}}
+                        </ng-template>
+                    </p-cellEditor>
+                </td>
+                <td>
+                    <!-- {{viewDataOfphotographer.registrationDate|date}} -->
+                    <p-cellEditor>
+                        <ng-template pTemplate="input">
+                            <input pInputText type="text" formControlName="registrationDate" required>
+                        </ng-template>
+                        <ng-template pTemplate="output">
+                            {{viewDataOfphotographer.registrationDate |date}}
+                        </ng-template>
+                    </p-cellEditor>
+                </td>
+
+                <td>
+                    <!-- {{viewDataOfphotographer.registrationDate|date}} -->
+                    <p-cellEditor>
+                        <ng-template pTemplate="input">
+                            <input pInputText type="text" formControlName="subcriptionPlan" required>
+                        </ng-template>
+                        <ng-template pTemplate="output">
+                            {{viewDataOfphotographer.subcriptionPlan}}
+                        </ng-template>
+                    </p-cellEditor>
+                </td>
+                <td>
+                    <!-- {{viewDataOfphotographer.registrationDate|date}} -->
+                    <p-cellEditor>
+                        <ng-template pTemplate="input">
+                            <input pInputText type="text" formControlName="totalImages" required>
+                        </ng-template>
+                        <ng-template pTemplate="output">
+                            {{viewDataOfphotographer.totalImages}}
+                        </ng-template>
+                    </p-cellEditor>
+                </td>
+
+                <td>
+                    <div class="flex align-items-center justify-content-center gap-2 edit-trash-icons">
+                        <button *ngIf="!editing" pButton type="button" pInitEditableRow icon="pi pi-pencil"
+                            class="ui-button-info" (click)="onRowEditInit(viewDataOfphotographer)"></button>
+
+                        <button *ngIf="editing" pButton type="button" pSaveEditableRow icon="pi pi-check"
+                            class="ui-button-success" style="margin-right: .5em"
+                            (click)="onRowEditSave(viewDataOfphotographer)"></button>
+                        <button *ngIf="editing" pButton type="button" pCancelEditableRow icon="pi pi-times"
+                            class="ui-button-danger" (click)="onRowEditCancel(viewDataOfphotographer, ri)"></button>
+
+                            <!-- <button pButton type="button" icon="pi pi-trash" class="ui-button-danger" (click)="deletePhotographer(viewDataOfphotographer.photographer_Id)"></button> -->
+                    </div>
+                </td>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="paginatorleft">
+            <p-button type="button" icon="pi pi-plus" styleClass="p-button-text"></p-button>
+        </ng-template>
+        <ng-template pTemplate="paginatorright">
+            <p-button type="button" icon="pi pi-cloud" styleClass="p-button-text"></p-button>
+        </ng-template>
+    </p-table>
+
+
+</div>

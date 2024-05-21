@@ -1,0 +1,202 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+   
+  }
+  input[type="text"]{
+    width:400px;
+  }
+  input[type="tel"]{
+    width:400px;
+  }
+  input[type="email"] {
+    width: 400px; /* Set the width to 100% for consistent width */
+  }
+  html, body {
+    height: 100vh;
+  }
+  .container {
+    max-width: 100vw;
+    margin: 20px auto;
+    padding: 20px;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    margin-right: 20px;
+  
+  }
+  
+  .row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 15px;
+  }
+  
+  
+  
+  .user-icon {
+    font-size: 2.5rem;
+    border-radius: 50%;
+    background-color: #070707;
+    margin: 25px;
+    color: #fff;
+    padding: 20px;
+    margin-bottom: 10px;
+  }
+  
+  form {
+    background-color: #e2e2e2;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  div {
+    margin-bottom: 15px;
+    width: 100%; 
+  }
+  
+  label {
+    font-weight: bold;
+  }
+  
+  input {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+    margin-top: 5px;
+  }
+  
+  button[type="submit"] {
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    cursor: pointer;
+    border: none;
+  }
+  
+  button[type="button"] {
+    padding: 10px;
+    background-color: #2a4a2c;
+    margin-left: 15px;
+    color: #fff;
+    cursor: pointer;
+    border: none;
+  }
+  
+  
+  .col img {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+  }
+  
+  .col form {
+    background-color: #e2e2e2;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 5px;
+    width: 100%;
+    max-width: 425px;
+    margin-left: 20px;
+  }
+  .error {
+    color: red;
+  }
+  .intl-tel-input {
+    color: #120018;
+  }
+  .sup {
+    color: red;
+  }
+  
+  /* Responsive styles for small devices */
+  @media only screen and (max-width: 567px) {
+    input[type="text"],
+    input[type="tel"],
+    input[type="email"] {
+      width: 280px;
+    }
+  
+    .container {
+      margin-left: 2px;
+    }
+    .col form {
+    background-color: #e2e2e2;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 5px;
+    width: 100%;
+    max-width: 300px;
+    margin-left: 20px;
+    margin-top: 50px;
+  }
+  }
+  
+  /* Responsive styles for medium devices */
+  @media only screen and (min-width: 568px) and (max-width: 767px) {
+    input[type="text"],
+    input[type="tel"],
+    input[type="email"] {
+      width: 350px;
+    }
+  
+    .container {
+      margin-left: 50px;
+    }
+    .col form {
+    background-color: #e2e2e2;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 5px;
+    width: 100%;
+    max-width: 380px;
+    margin-left: 20px;
+    margin-top: 50px;
+  }
+  }
+  
+  /* Responsive styles for large devices */
+  @media only screen and (min-width: 768px) and (max-width: 991px) {
+    input[type="text"],
+    input[type="tel"],
+    input[type="email"] {
+      width: 380px; /* Adjust based on your design */
+    }
+  
+    .container {
+      margin-left: 100px;
+    }
+    .col form {
+    background-color: #e2e2e2;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 5px;
+    width: 100%;
+    max-width: 425px;
+    margin-left: 100px;
+    margin-top: 50px;
+  }
+  }
+  
+  /* Responsive styles for extra-large devices */
+  @media only screen and (min-width: 992px) {
+    input[type="text"],
+    input[type="tel"],
+    input[type="email"] {
+      width: 400px; /* Set a fixed width for larger screens if needed */
+    }
+  
+    .container {
+      margin-left: 400px;
+    }
+    .col form {
+    background-color: #e2e2e2;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 5px;
+    width: 100%;
+    max-width: 425px;
+    margin-left: 100px;
+    margin-top: 50px;
+  }
+  }

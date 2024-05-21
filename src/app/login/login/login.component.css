@@ -1,0 +1,67 @@
+body {
+  margin: 0;
+  padding: 0;
+  background: url("/assets/images/back.webp") no-repeat center center fixed;
+  background-size: cover;
+  background-attachment: fixed;
+  overflow-x: hidden;
+}
+html,
+body {
+  height: 100vh;
+}
+.error {
+  color: red;
+}
+.formdesign {
+  background-color: rgb(240, 237, 237);
+  border: 1px solid aliceblue;
+  border-radius: 15px;
+  width: 400px;
+  height: 300px;
+  margin-left: 300px;
+}
+input {
+  background-color: white;
+}
+
+label {
+  color: black;
+}
+
+.sign {
+  background-color: rgb(87, 161, 87);
+}
+.pass {
+  margin-left: 200px;
+}
+span#floatingInput.input-group-text {
+  height: 59px;
+}
+span.input-group-text {
+  height: 59px;
+}
+.eye-icon {
+    cursor: pointer;
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+@media only screen and (max-width: 767px) {
+  .formdesign {
+    margin-left: 200px;
+  }
+}
+@media only screen and (max-width: 566px) {
+  .formdesign {
+    margin-left: 0px;
+    width: 300px;
+    height: 300px;
+  }
+  .pass {
+    margin-left: 100px;
+  }
+}
+
+

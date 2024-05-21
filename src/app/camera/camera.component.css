@@ -1,0 +1,192 @@
+/* .webcam-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .circle {
+    border-radius: 50%;
+    width: 300px; 
+    height: 400px; 
+    overflow: hidden;
+    position: relative;
+
+    
+  }
+  .proceed{
+    background-color: blue;
+  }
+
+  button{
+    background-color: blue;
+    color: brown;
+  } */
+
+
+
+
+.webcam-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  /* background-color: blanchedalmond; */
+}
+
+.container{
+  margin-top: 2rem;
+}
+
+.circle {
+  /* border-radius: 50%; */
+  /* width: 600px; */
+  /* height: 600px; */
+  /* overflow: hidden; */
+  position: relative;
+  width: 100%;
+
+}
+
+.proceed {
+  display: block;
+  text-align: center;
+}
+
+/* button{
+  background-color: blue;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 15px;
+} */
+
+.cam_container{
+  text-align: center;
+  width: 480px;
+}
+.mask {
+  /* width: 480px; */
+  /* position: absolute; */
+  top: 0;
+  /* left: 50%; */
+  /* transform: translateX(-50%); */
+  overflow: hidden;
+  z-index: -2;
+}
+.circle .webcam-wrapper{
+  margin-top: 2rem !important;
+}
+
+.circle-clip {
+  border: 5px solid red;
+  position: absolute;
+  top: 0%;
+  left: 50%;
+  transform: translateX(-50%);
+  /* margin: auto; */
+  width: 480px;
+  height: 480px;
+  overflow: hidden;
+  border-radius: 50%;
+  z-index: 5;
+}
+
+.circle-clip webcam {
+  width: 100%; /* Ensure the webcam fills the circle */
+  height: 100%;
+  object-fit: cover; /* Maintain aspect ratio */
+}
+
+.image{
+  background-color: #818CF8;
+  padding: 2rem;
+  border-radius: 15px;
+}
+.image img{
+  border-radius: 8px;
+  border: 2px solid rgb(5, 6, 45) ;
+}
+
+/* input css code  */
+
+.coolinput {
+  display: flex;
+  flex-direction: column;
+  width: fit-content;
+  position: static;
+  /* max-width: 240px; */
+}
+
+.coolinput label.text {
+  font-size: 0.75rem;
+  color: #818CF8;
+  font-weight: 700;
+  position: relative;
+  top: 0.5rem;
+  margin: 0 0 0 7px;
+  padding: 0 3px;
+  background: #fff;
+  width: fit-content;
+}
+
+.coolinput input[type=text].input {
+  padding: 11px 10px;
+  /* font-size: 0.75rem; */
+  /* width: 100%; */
+  border: 2px #818CF8 solid;
+  border-radius: 5px;
+  background: #fff;
+  width:460px;
+}
+
+.coolinput input[type=text].input:focus {
+  outline: none;
+}
+
+/* button css code  */
+
+button {
+ align-items: center;
+ background-image: linear-gradient(144deg,#AF40FF, #5B42F3 50%,#00DDEB);
+ border: 0;
+ border-radius: 8px;
+ box-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px;
+ box-sizing: border-box;
+ color: #FFFFFF;
+ display: flex;
+ font-family: Phantomsans, sans-serif;
+ font-size: 18px;
+ justify-content: center;
+ line-height: 1em;
+ max-width: 100%;
+ min-width: 140px;
+ padding: 3px;
+ text-decoration: none;
+ user-select: none;
+ -webkit-user-select: none;
+ touch-action: manipulation;
+ white-space: nowrap;
+ cursor: pointer;
+ transition: all .3s;
+}
+
+button:active,
+button:hover {
+ outline: 0;
+}
+
+button span {
+ background-color: rgb(5, 6, 45);
+ padding: 16px 24px;
+ border-radius: 6px;
+ width: 100%;
+ height: 100%;
+ transition: 300ms;
+}
+
+button:hover span {
+ background: none;
+}
+
+button:active {
+ transform: scale(0.9);
+}

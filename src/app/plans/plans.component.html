@@ -1,0 +1,59 @@
+<app-navbar></app-navbar>
+<div class="plansparent1">
+    <div class="plansparent">
+        <div id="pricing-table">
+            <div class="smaller">
+                <div class="plan plan1">
+                    <div class="header">Free</div>
+                    <div class="price">$0</div>
+                    <div class="Monthly">month</div>      
+                    <ul>
+                        <li><b>unlimited Events</b></li>
+                        <li><b> 500 Images</b></li>
+                        <li><b>Maintaince</b></li>
+
+                    </ul>
+                    
+                    <a  class="signup" [routerLink]="['/registration']"  [queryParams]="{ subcriptionPlan: 0, totalImages: 500 ,planType:'Monthly'}">Sign up</a>
+                </div>
+                <div class="plan plan2 popular-plan">
+                    <div class="header">Basic Plan</div>
+                    <div class="price">$ 300</div>
+                    <div class="Monthly">per month</div>
+                    <ul>
+                        <li><b> 1000 Images</b> </li>
+                        <li><b>Unlimited Events</b> </li>
+                        <li><b>Maintaince</b></li>
+                    </ul>
+                    <a class="signup" [routerLink]="['/registration']" [queryParams]="{ subcriptionPlan: 300, totalImages: 1000,planType:'Monthly' }">Sign up</a>
+                </div>
+            </div>
+            <!-- <div class="plan plan3">
+                <div class="header">Standard</div>
+                <div class="price">$19</div>
+                <div class="monthly">per month</div>
+                <ul>
+                    <li><b>3GB</b> Disk Space</li>
+                    <li><b>25GB</b> Monthly Bandwidth</li>
+                    <li><b>5</b> Email Accounts</li>
+                    <li><b>Unlimited</b> subdomains</li>
+                </ul>
+                <a class="signup" href="">Sign up</a>
+            </div> -->
+            <!-- <div class="plan plan4">
+
+                <div class="header">Basic</div>
+                <div class="price">$9</div>
+                <div class="monthly">per month</div>
+                <ul>
+                    <li><b>1GB</b> Disk Space</li>
+                    <li><b>10GB</b> Monthly Bandwidth</li>
+                    <li><b>2</b> Email Accounts</li>
+                    <li><b>Unlimited</b> subdomains</li>
+                </ul>
+                <a class="signup" href="">Sign up</a>
+            </div> -->
+        </div>
+
+    </div>
+    <app-footer></app-footer>

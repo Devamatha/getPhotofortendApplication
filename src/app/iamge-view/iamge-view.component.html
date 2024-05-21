@@ -1,0 +1,5 @@
+<!-- image-viewer.component.html -->
+<div *ngFor="let image of images">
+    <img [src]="'data:image/png;base64,' + image.base64Image" alt="Base64 Image">
+  </div>
+  

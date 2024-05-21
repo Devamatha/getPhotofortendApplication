@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div class="container">
+
+
+    <div class="photo-gallery">
+      <div class="column" id="masonry-container">
+        <div class="image-grid" *ngFor="let imageData of imagesData">
+          <div class="image-container">
+            <img [src]="imageData.imageUrl" alt="Event Image">
+            <div class="image-overlay">
+              <div class="toggle-options" (click)="toggleOptions(imageData)">
+                <span>...</span>
+              </div>
+              <div class="options" *ngIf="imageData.showOptions">
+                <button (click)="removeImage(imageData.id)">Remove</button>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

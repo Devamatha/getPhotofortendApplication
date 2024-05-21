@@ -1,0 +1,74 @@
+.coloring {
+  background-color: rgb(23, 121, 219);
+}
+
+.parentcontact {
+  padding: 80px;
+}
+.add {
+  height: 60vh;
+  background-color: #228b22;
+  color: white;
+}
+.addp {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+.cicons {
+  border-radius: 60%;
+  padding: 10px;
+  border: 1px solid white;
+  box-shadow: 1px 1px 1px 1px solid rgb(152, 150, 150);
+  opacity: 0.8;
+}
+.bcolor {
+  background-color: #faf9f6;
+}
+.details {
+  background-color: white;
+  height: 70vh;
+  padding: 50px;
+}
+.ctittle {
+  padding-top: 40px;
+}
+.cpre {
+  color: rgb(228, 231, 236);
+}
+.cpadleft {
+  padding-left: 50px;
+  color: rgb(228, 231, 236);
+}
+.cpadleftt {
+  padding-left: 20px;
+
+  font-weight: 600;
+}
+@media only screen and (max-width: 320px) {
+  .add {
+    height: auto;
+    background-color: #228b22;
+    width: 400px;
+    color: white;
+  }
+  .cicons {
+    border-radius: none;
+    padding: none;
+    border: none;
+    box-shadow: none;
+    opacity: none;
+  }
+  .cpadleft {
+    padding: none;
+    color: rgb(228, 231, 236);
+  }
+  .cpadleftt {
+    padding: none;
+    font-weight: 600;
+  }
+  .pflex {
+    width: 100%;
+  }
+}

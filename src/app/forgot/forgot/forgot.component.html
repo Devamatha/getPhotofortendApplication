@@ -1,0 +1,58 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+</head>
+
+<body>
+    <div class="container form-container position-relative">
+        <!-- <span class="close-icon" onclick="closeForm()">X</span> -->
+        <div class="row">
+
+            <div class="col-sm-12 my-3 text-center">
+                <h3>Find Your Account</h3>
+            </div>
+        </div>
+        <p class="text-center">please enter your email address to search for your account</p>
+        <form [formGroup]="changePasswordForm" (ngSubmit)="submit()">
+            <input type="email" id="email" formControlName="email" placeholder="Enter Your Email" required>
+
+
+            <div
+            *ngIf="changePasswordForm.get('email')?.invalid && changePasswordForm.get('email')?.touched">
+            <small class="error" *ngIf="changePasswordForm.get('email')?.errors?.['required']">
+                Please Enter Email
+            </small>
+            
+            <small class="error" *ngIf="changePasswordForm.get('email')?.errors?.['invalidEmailOrMobile']">
+                Enter a valid gmail/org email 
+              </small>
+        </div>
+            <!-- <input type="submit" class="col-xs-12 btn btn-primary btn-load btn-lg"
+                data-loading-text="Changing Password..." value="Change Password"> -->
+
+                <div class="d-flex justify-content-center mt-2 mb-3">
+                    <button type="submit" class="btn btn-primary me-2" [disabled]="loading">
+                        <ng-container *ngIf="!loading">Change Password</ng-container>
+                        <ng-container *ngIf="loading">
+                            <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                            Changing Password...
+                        </ng-container>
+                    </button>
+                    <button type="button" class="btn btn-secondary" routerLink="/home">Back to Home</button>
+                </div>
+
+
+        </form>
+<!-- 
+        <button type="submit" class="col-xs-12 btn btn-primary btn-load btn-lg"  routerLink="/home">BackToHome
+        </button> -->
+    </div>
+
+</body>
+
+</html>

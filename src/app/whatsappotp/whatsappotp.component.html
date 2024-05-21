@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div class="otpparent">
+    <div class="row mx-auto w-75">
+      <div class="col-5 rightside">
+        <img src="assets/images/demo_image.png" id="imagew" alt="">
+      </div>
+      <div class="col-7 smalldevices mt-5">
+        <form [formGroup]="whatsauthetication">
+          <div class="row">
+            <div class="col-sm-2 col-md-2 col-lg-2 col-12 whatsapplogo">
+              <i class="pi pi-whatsapp bb" style="font-size: 4.5rem"></i>
+            </div>
+            <div class="col-sm-10 col-md-5 col-lg-5 col-12 whatsapplogotext">
+              <h5>Enter Your</h5>
+              <h5>whatsapp Number</h5>
+            </div>
+          </div>
+          <br>
+          <div class="row">
+
+            <div class="col-sm-12 col-md-6 col-lg-6 col-12">
+              <div class="input-group flex-nowrap">
+                <span class="input-group-text mbcolor" id="addon-wrapping">+91</span>
+                <input type="text" class="form-control" placeholder="MOBILE NUMBER" aria-label="Username"
+                  formControlName="number" aria-describedby="addon-wrapping">
+
+                  <div *ngIf="whatsauthetication.get('number')?.invalid && whatsauthetication.get('number')?.touched">
+                    <small class="error" *ngIf="whatsauthetication.get('number')?.errors?.['required']"> 
+                      Please Whatsapp Number
+                    </small>
+                </div>
+              </div>
+            </div>
+          </div>
+          <br>
+          <div class="row" *ngIf="otp">
+            <div class="col-sm-12 col-md-6 col-lg-6 col-12">
+              <span class="otpcolor">otp:</span>
+              <input type="password" id="inputPassword6" class="form-control" formControlName="body"
+                placeholder="ENTER OTP HERE" aria-describedby="passwordHelpInline">
+            </div>
+          </div>
+          <br>
+
+          <div class="col-2 butnotp">
+            <button type="button" class="btn" (click)="onVerifyButtonClick(number)" *ngIf="verify">VERIFY</button>
+            <button type="button" class="btn" (click)="verifyOtp()" *ngIf="otp"> VERIFY OTP</button>
+          </div>
+        </form>
+
+      </div>
+    </div>
+  </div>
+
+</body>
+
+</html>
+<router-outlet></router-outlet>

@@ -1,0 +1,77 @@
+<!-- 
+
+<div class="container">
+    <form [formGroup]="faceCapturing" (ngSubmit)="onSubmit()">
+        <div class="webcam-container">
+            <div class="cam_container">
+            <div class="circle">
+                <webcam [trigger]="$trigger" (imageCapture)="snapshot($event)" [imageQuality]="1"></webcam>
+            </div>
+          <button (click)="captureImage()" style="color: black;">{{btnLabel}}</button> 
+            <div *ngIf="previewImage" class="proceed">
+                <img [src]="previewImage" height="250" width="250">
+                <button (click)="proceed()">Proceed</button>
+            </div>
+        </div>
+        </div>
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="floatingInput" placeholder="fulllName" formControlName="fullName">
+            <label for="floatingInput">FulllName</label>
+          </div>
+
+
+          <button (click)="onSubmit()">Submit</button>
+    </form>
+</div>
+
+
+ -->
+
+
+<!-- HTML code : -->
+
+
+<!-- <div>
+    <button (click)="checkPermissions()">Check the webcam permissions</button>
+    <p *ngIf="status">Status here: {{status}}{{btnLabel}}</p>
+    
+</div> -->
+
+<div class="container">
+    <form [formGroup]="faceCapturing" (ngSubmit)="onSubmit()">
+        <div class="webcam-container">
+            <div class="cam_container">
+                <div class="circle">
+                    <div class="circle-clip">
+                        <webcam [trigger]="$trigger" (imageCapture)="snapshot($event)" [imageQuality]="1"></webcam>
+                    </div>
+                    <div class="mask">
+                        <!-- <webcam></webcam> -->
+                        <div
+                            style="background-color: black; width: 100%; height: 480px;position: absolute; z-index: 1; opacity: 75%;">
+                        </div>
+                        <webcam [trigger]="$trigger" (imageCapture)="snapshot($event)" [imageQuality]="1"></webcam>
+                    </div>
+                </div>
+                <!-- <button (click)="captureImage()"><span class="text">{{btnLabel}}</span></button> -->
+            </div>
+            <!-- <div *ngIf="previewImage" class="proceed">
+                <div class="image">
+                    <img [src]="previewImage" height="250" width="250">
+                </div>
+                <button (click)="proceed()" class="mt-2"><span class="text">Proceed</span></button>
+            </div> -->
+        </div>
+        <!-- <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="floatingInput" placeholder="fulllName" formControlName="fullName">
+            <label for="floatingInput">FulllName</label>
+        </div> -->
+        <div class="coolinput w-100 mb-3">
+            <label for="input" class="text">FulllName:</label>
+            <input type="text" class="input" id="floatingInput" placeholder="Full Name" formControlName="fullName">
+        </div>
+
+
+        <button (click)="onSubmit()"><span class="text">Submit</span></button>
+    </form>
+</div>

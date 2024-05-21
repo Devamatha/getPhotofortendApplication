@@ -1,0 +1,176 @@
+<div class="card" [ngClass]="{'hidden-content': !isContentVisible}">
+    <div class="calucualtion">
+
+
+        <b>Images Uploaded: {{ responseData?.totalUploadedImages }} / {{ responseData?.totalAllowedImages }} = {{
+            responseData?.totalRemaingImages }}</b>
+
+    </div>
+    <p-table [value]="viewDataOfphotographer" #dt2 dataKey="event_Id" [paginator]="true" [rows]="5"
+        [showCurrentPageReport]="true" editMode="row"
+        currentPageReportTemplate="showing{first}to{last}of {totalRecords}entries" [rowsPerPageOptions]="[5,10,20]"
+        [tableStyle]="{ 'min-width': '25rem'}">
+        <ng-template pTemplate="caption">
+            <div class="p-input-icon-left flex">
+                <i class="pi pi-search"></i>
+                <input pInputText type="text" [(ngModel)]="searchText" style="width: 100%; margin: 10px auto"
+                    (input)="overAllSerach()" />
+
+            </div>
+        </ng-template>
+        <ng-template pTemplate="header">
+            <tr class="headerDetails">
+                <th style="width:25%">S.N</th>
+                <th pSortableColumn="eventName" style="width:25%">Event Name<p-sortIcon field="eventName"></p-sortIcon>
+                </th>
+                <th pSortableColumn="eventAddress" style="width:25%">Event Address<p-sortIcon
+                        field="eventAddress"></p-sortIcon></th>
+                <th pSortableColumn="eventDate" style="width:25%">EventDate<p-sortIcon field="eventDate"></p-sortIcon>
+                </th>
+
+                <th>Action</th>
+            </tr>
+            <tr>
+                <th></th>
+                <th>
+                    <span class="p-input-icon-left ml-auto">
+                        <i class="pi pi-search"></i>
+                        <input pInputText type="text" [(ngModel)]="searcheventName" (input)="filtereventName()" />
+                    </span>
+                </th>
+                <th>
+                    <span class="p-input-icon-left ml-auto">
+                        <i class="pi pi-search"></i>
+                        <input pInputText type="text" [(ngModel)]="searcheventAddress" (input)="filtereventAddress()" />
+                    </span>
+                </th>
+
+
+
+                <th>
+                    <span class="p-input-icon-left ml-auto">
+                        <i class="pi pi-search"></i>
+                        <input pInputText type="text" [(ngModel)]="searchDate" (input)="filterDate()" />
+                    </span>
+                </th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-viewDataOfphotographer let-i="rowIndex" let-editing="editing"
+            let-ri="rowIndex">
+
+            <tr [pEditableRow]="viewDataOfphotographer" [formGroup]="editForm"
+                (click)="toggleSubItems(viewDataOfphotographer)">
+                <td>{{i+1}}</td>
+                <td>
+                    <!-- {{viewDataOfphotographer.fullName}} -->
+                    <p-cellEditor>
+                        <ng-template pTemplate="input">
+                            <input pInputText type="text" formControlName="eventName">
+                        </ng-template>
+                        <ng-template pTemplate="output">
+                            {{viewDataOfphotographer.eventName}}
+                        </ng-template>
+                    </p-cellEditor>
+                </td>
+                <td>
+                    <!-- {{viewDataOfphotographer.email}} -->
+                    <p-cellEditor>
+                        <ng-template pTemplate="input">
+                            <input pInputText type="text" formControlName="eventAddress" required>
+                        </ng-template>
+                        <ng-template pTemplate="output">
+                            {{viewDataOfphotographer.eventAddress}}
+                        </ng-template>
+                    </p-cellEditor>
+                </td>
+
+
+                <td>
+                    <p-cellEditor>
+                        <ng-template pTemplate="input">
+                            <input pInputText type="text" formControlName="eventDate" required>
+                        </ng-template>
+                        <ng-template pTemplate="output">
+                            {{viewDataOfphotographer.eventDate |date}}
+                        </ng-template>
+                    </p-cellEditor>
+                </td>
+
+                <td>
+                    <div class="flex align-items-center justify-content-center gap-2 edit-trash-icons">
+                        <button *ngIf="!editing" pButton type="button" pInitEditableRow icon="pi pi-pencil"
+                            class="ui-button-info" (click)="onRowEditInit(viewDataOfphotographer)"></button>
+
+                        <button *ngIf="editing" pButton type="button" pSaveEditableRow icon="pi pi-check"
+                            class="ui-button-success" style="margin-right: .5em"
+                            (click)="onRowEditSave(viewDataOfphotographer)"></button>
+
+                        <button *ngIf="editing" pButton type="button" pCancelEditableRow icon="pi pi-times"
+                            class="ui-button-danger" (click)="onRowEditCancel(viewDataOfphotographer, ri)"></button>
+
+                        <!-- <button pButton type="button" icon="pi pi-trash" class="ui-button-danger"
+                            (click)="deletePhotographer(viewDataOfphotographer.event_Id)"></button> -->
+
+                        <div class="custom-file-upload" [formGroup]="uploadphotos" >
+                            <label for="uploadInput">
+                                <i class="pi pi-upload" (click)="onClickUploadIcon(i)"></i>
+                            </label>
+                            <input id="uploadInput" type="file" pInputText formControlName="image" multiple
+                                (change)="onFileSelected($event)">
+                        </div>
+                        <button *ngIf="uploading && i === clickedRowIndex" pButton type="button" icon="pi pi-check"
+                            class="ui-button-success" style="margin-right: .5em"
+                            (click)="uploadPhotoss(viewDataOfphotographer.event_Id)">
+                        </button>
+
+
+                        <button pButton type="button" icon="pi pi-eye" class="ui-button-danger"
+                            [routerLink]="['eventsimgess', viewDataOfphotographer.event_Id]"
+                            (click)="toggleContentVisibility()">
+                        </button>
+
+
+                        <button pButton type="button" pCancelEditableRow icon="pi pi-qrcode" class="ui-button-violet"
+                            (click)="showDialog()"></button>
+
+
+                        <button pButton type="button" icon="pi pi-upload" class="ui-button-info"
+                            (click)="finalSubmit(viewDataOfphotographer.event_Id)"></button>
+
+                    </div>
+                </td>
+            </tr>
+
+            <p-dialog [(visible)]="displayDialog" [modal]="true">
+                <div class="dialog-content">
+                    <button pButton type="button" (click)="toggleOptions()">Download Qr</button>
+<!-- 
+                    <button pButton type="button" (click)="downloadQr(viewDataOfphotographer.event_Id)">Download
+                        Qr</button> -->
+
+                        <div *ngIf="showOptions" class="options-list">
+                            <ul>
+                              <li (click)="downloadQr(viewDataOfphotographer.event_Id, 'banner')">Banner</li>
+                              <li (click)="downloadQr(viewDataOfphotographer.event_Id, 'A4size')">A4size</li>
+                              <li (click)="downloadQr(viewDataOfphotographer.event_Id, 'retractable-banner')">Retractable-Banner</li>
+                            </ul>
+                          </div>
+
+                    <img [src]="'data:image/png;base64,' + viewDataOfphotographer.qrCode" alt="QR Code"
+                        *ngIf="QrCodeVisible">
+                </div>
+
+            </p-dialog>
+        </ng-template>
+        <ng-template pTemplate="paginatorleft">
+            <p-button type="button" icon="pi pi-plus" styleClass="p-button-text"></p-button>
+        </ng-template>
+        <ng-template pTemplate="paginatorright">
+            <p-button type="button" icon="pi pi-cloud" styleClass="p-button-text"></p-button>
+        </ng-template>
+    </p-table>
+
+
+</div>
+
+<router-outlet></router-outlet>

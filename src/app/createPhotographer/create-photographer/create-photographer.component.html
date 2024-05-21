@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <form [formGroup]="application" (ngSubmit)="onSubmit()">
+                    <i class="pi pi-user user-icon"></i>
+                    <h4>Photographer Registration Form</h4>
+                    <div>
+                        <label>Name:<sup class="sup">*</sup></label>
+                        <input type="text" class="form-control" formControlName="fullName" required maxlength="50"
+                            pattern="[A-Za-z ]+" placeholder="please enter the name" />
+                        <div *ngIf="application.get('fullName')?.invalid && application.get('fullName')?.touched">
+                            <small class="error" *ngIf="application.get('fullName')?.errors?.['required']"> Please enter
+                                Name
+                            </small>
+                            <small class="error" *ngIf="application.get('fullName')?.errors?.['required']">
+                                Please enter Name
+                            </small>
+                            <small *ngIf="application.get('fullName')?.errors?.['maxlength']"> Name should have at most
+                                50
+                                characters
+                            </small>
+                            <small class="error" *ngIf="application.get('fullName')?.errors?.['pattern']">Invalid
+                                Name</small>
+                        </div>
+                    </div>
+                    <div>
+                        <label for="mobileNumber">Phone Number<sup class="sup">*</sup></label>
+                        <div class="intl-tel-input">
+                            <input type="tel" id="mobileNumber" required formControlName="mobileNumber"
+                                (keypress)="numberOnly($event)" />
+
+
+                        </div>
+                        <div class="error" *ngIf="
+                            application.get('mobileNumber')?.invalid &&
+                            application.get('mobileNumber')?.touched
+                          ">
+                            <small class="error" *ngIf="application.get('mobileNumber')?.errors?.['required']">Please
+                                enter your phone number</small>
+                            <small class="error" *ngIf="application.get('mobileNumber')?.errors?.['pattern']">Please
+                                enter a valid 10-digit phone number starting with digits
+                                6,7,8,9</small>
+                        </div>
+                    </div>
+
+
+                    <div>
+                        <label>Email address<sup class="sup">*</sup></label>
+                        <input type="email" class="form-control" placeholder="name@example.com" formControlName="email"
+                            pattern="^[A-Za-z0-9.]+@[a-z0-9]+\.(com|in|org)$">
+                        <div class="error"
+                            *ngIf="application.get('email')?.invalid && application.get('email')?.touched">
+                            <small class="error" *ngIf="application.get('email')?.errors?.['required']">
+                                Please enter Email
+                            </small>
+                            <small class="error" *ngIf="application.get('email')?.errors?.['pattern']">
+                                Invalid Email Pettern please enter Valid Email
+                            </small>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col">
+                            <button type="submit">Submit</button>
+                        </div>
+
+                    </div>
+
+                </form>
+            </div>
+        </div>
+
+    </div>
+</body>
+
+</html>

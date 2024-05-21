@@ -1,0 +1,166 @@
+<div class="card">
+    <p-table [value]="viewDataOfUsers" #dt2 dataKey="photographer_Id" [paginator]="true" [rows]="5"
+        [showCurrentPageReport]="true" editMode="row"
+        currentPageReportTemplate="showing{first}to{last}of {totalRecords}entries" [rowsPerPageOptions]="[5,10,20]"
+        [tableStyle]="{ 'min-width': '25rem'}">
+        <ng-template pTemplate="caption">
+            <div class="p-input-icon-left flex">
+                    <i class="pi pi-search"></i>
+                    <input pInputText type="text" [(ngModel)]="searchText" style="width: 100%; margin: 10px auto"
+                        (input)="overAllSerach()" />
+
+            </div>
+        </ng-template>
+       <ng-template pTemplate="header">
+            <tr class="headerDetails">
+                <th style="width:25%">S.N</th>
+                <th pSortableColumn="fullName" style="width:25%">Full Name<p-sortIcon field="fullName"></p-sortIcon>
+                </th>
+                <th pSortableColumn="email" style="width:25%">Whatsapp Number<p-sortIcon field="email"></p-sortIcon></th>
+                <th pSortableColumn="mobileNumber" style="width:25%">Registered Event<p-sortIcon
+                        field="mobileNumber"></p-sortIcon></th>
+                <th pSortableColumn="password" style="width:25%">Registered Address <p-sortIcon field="password"></p-sortIcon></th>
+              <th pSortableColumn="registredDate" style="width:25%">Registration Date<p-sortIcon
+                    field="registredDate"></p-sortIcon></th>
+                <!--   <th pSortableColumn="totalImages" style="width:25%">Total Images<p-sortIcon
+                        field="totalImages"></p-sortIcon></th>
+                        
+                            <th pSortableColumn="subcriptionPlan" style="width:25%">Subcription Plan<p-sortIcon
+                                field="subcriptionPlan"></p-sortIcon></th> -->
+                <th>Action</th>
+            </tr>
+            
+                <th></th>
+                <th>
+                    <span class="p-input-icon-left ml-auto">
+                        <i class="pi pi-search"></i>
+                        <input pInputText type="text" [(ngModel)]="searchFullName" (input)="filterFullName()" />
+                    </span>
+                </th>
+              
+                <th>
+                    <span class="p-input-icon-left ml-auto">
+                        <i class="pi pi-search"></i>
+                        <input pInputText type="text" [(ngModel)]="searhMobileNumber" (input)="filterMobileNumber()" />
+                    </span>
+                </th>
+                <th>
+                    <span class="p-input-icon-left ml-auto">
+                        <i class="pi pi-search"></i>
+                        <input pInputText type="text" [(ngModel)]="searchEventName" (input)="filterEventName()" />
+                    </span>
+                </th>
+                <th>
+                    <span class="p-input-icon-left ml-auto">
+                        <i class="pi pi-search"></i>
+                        <input pInputText type="text" [(ngModel)]="searcheventAddress" (input)="filterEventAddress()" />
+                    </span>
+                </th>
+
+
+
+                <th>
+                    <span class="p-input-icon-left ml-auto">
+                        <i class="pi pi-search"></i>
+                        <input pInputText type="text" [(ngModel)]="searchDate" (input)="filterDate()" />
+                    </span>
+                </th>
+                 <!-- <tr>
+                <th>
+                    <span class="p-input-icon-left ml-auto">
+                        <i class="pi pi-search"></i>
+                        <input pInputText type="text" [(ngModel)]="searchEmail" (input)="filterEmail()" />
+                    </span>
+                </th>
+                <th>
+                    <span class="p-input-icon-left ml-auto">
+                        <i class="pi pi-search"></i>
+                        <input pInputText type="text" [(ngModel)]="searhMobileNumber" (input)="filterMobileNumber()" />
+                    </span>
+                </th>
+                <th>
+                    <span class="p-input-icon-left ml-auto">
+                        <i class="pi pi-search"></i>
+                        <input pInputText type="text" [(ngModel)]="searhPassword" (input)="filterPassword()" />
+                    </span>
+                </th>
+
+           
+                <th>
+                    <span class="p-input-icon-left ml-auto">
+                        <i class="pi pi-search"></i>
+                        <input pInputText type="text" [(ngModel)]="searchtotalImages" (input)="filtertotalImages()" />
+                    </span>
+                </th>
+                <th>
+                    <span class="p-input-icon-left ml-auto">
+                        <i class="pi pi-search"></i>
+                        <input pInputText type="text" [(ngModel)]="searchsubcriptionPlan" (input)="filtersubcriptionPlan()" />
+                    </span>
+                </th>
+            </tr> -->
+        </ng-template>
+        <ng-template pTemplate="body" let-viewDataOfUsers let-i="rowIndex">
+
+            <tr>
+                <td>{{i+1}}</td>
+                <td>
+                    {{viewDataOfUsers.fullName}}
+                    
+                </td>
+                <td>
+                    {{viewDataOfUsers.number}}
+                   
+                </td>
+                <td>
+                   {{viewDataOfUsers.eventName}} 
+                    
+                </td>
+                <td>
+                    {{viewDataOfUsers.eventAddress}}
+                   
+                </td>
+                <td>
+               {{viewDataOfUsers.registredDate|date}}
+                    
+                </td>
+
+
+                <!-- <td>
+                    {{viewDataOfUsers.userId}}
+                         
+                     </td>
+
+                     
+                <td>
+                    {{viewDataOfUsers.eventId}}
+                         
+                     </td> -->
+
+              
+
+                <td>
+                    <div class="flex align-items-center justify-content-center gap-2 edit-trash-icons">
+                        <button  pButton type="button"  icon="pi pi-upload"
+                            class="ui-button-info"  (click)="sendWhatsapp(viewDataOfUsers.eventId)"></button>
+
+                        <!-- <button *ngIf="editing" pButton type="button" pSaveEditableRow icon="pi pi-check"
+                            class="ui-button-success" style="margin-right: .5em"
+                            (click)="onRowEditSave(viewDataOfUsers)"></button>
+                        <button *ngIf="editing" pButton type="button" pCancelEditableRow icon="pi pi-times"
+                            class="ui-button-danger" (click)="onRowEditCancel(viewDataOfUsers, ri)"></button> -->
+
+                    </div>
+                </td> 
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="paginatorleft">
+            <p-button type="button" icon="pi pi-plus" styleClass="p-button-text"></p-button>
+        </ng-template>
+        <ng-template pTemplate="paginatorright">
+            <p-button type="button" icon="pi pi-cloud" styleClass="p-button-text"></p-button>
+        </ng-template>
+    </p-table>
+
+
+</div>

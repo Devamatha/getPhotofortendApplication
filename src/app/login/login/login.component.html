@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+
+<body>
+
+    <div>
+        <div class="row justify-content-center ">
+            <div class="col-md-6 formdesign mt-5 text-center">
+
+                <form [formGroup]="login" (ngSubmit)="onSubmit()">
+                    <div class="input-group form-floating mb-3 mt-3 ">
+                        <span class="input-group-text  " id="floatingInput"><i class="bi bi-envelope"></i></span>
+                        <div class="form-floating ">
+                            <input type="email" class="form-control" id="floatingInput"
+                                placeholder="Email or mobilenumber" formControlName="emailOrMobileNumber" required>
+                            <label for="floatingInput">Email OR MobileNumber</label>
+                            <div
+                                *ngIf="login.get('emailOrMobileNumber')?.invalid && login.get('emailOrMobileNumber')?.touched">
+                                <small class="error" *ngIf="login.get('emailOrMobileNumber')?.errors?.['required']">
+                                    Please Enter email or phoneNumber
+                                </small>
+                                
+                                <small class="error" *ngIf="login.get('emailOrMobileNumber')?.errors?.['invalidEmailOrMobile']">
+                                    Enter a valid gmail/org email or a Enter a Valid Mobile Number
+                                  </small>
+                            </div>
+
+                          
+                        </div>
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text"><i class="bi bi-lock"></i></span>
+                        <div class="form-floating">
+                            <input type="password" class="form-control" id="floatingPassword" placeholder="password"
+                                formControlName="password" required>
+                            <label for="floatingPassword">password</label>
+                            <span class="eye-icon" (click)="togglePasswordVisibility()">
+                                <i class="bi"
+                                    [ngClass]="{'bi-eye': !passwordVisible, 'bi-eye-slash': passwordVisible}"></i>
+                            </span>
+                            <!--<span class="eye-icon" >
+                        <i class="bi bi-eye"></i>
+                          </span>-->
+                            <div *ngIf="login.get('password')?.invalid && login.get('password')?.touched">
+                                <small class="error" *ngIf="login.get('password')?.errors?.['required']">
+                                    Please Enter Password
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a [routerLink]="['/forgot']">forgot password?</a>
+
+
+                    <!-- <button  class="btn sign" routerLink="registration">Signup</button>&nbsp;
+            <button type="submit" class="btn btn-success">SignIn</button>
+             -->
+                    <div class="row">
+                        <div class="col">
+                            <!-- <button type="submit" class="btn sign">SignIn</button> -->
+
+                            <button type="submit" class="btn sign btn-primary me-2" [disabled]="isLoading">
+                                <ng-container *ngIf="!isLoading">SignIn</ng-container>
+                                <ng-container *ngIf="isLoading">
+                                    <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                                    SignIn
+                                </ng-container>
+                            </button>
+                        </div>
+                        <div class="col">
+                            <button type="button" class="btn btn-primary" routerLink="/plans">Sign Up</button>
+
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <form [formGroup]="eventForm" (ngSubmit)="onSubmit()">
+                    <i class="pi pi-user user-icon"></i>
+                    <h4>Event Creation Form</h4>
+                    <div>
+                        <label> Event Name:<sup class="sup">*</sup></label>
+                        <input type="text" class="form-control" formControlName="eventName" required maxlength="50"
+                            pattern="[A-Za-z ]+" placeholder="please enter the eventName" />
+                        <div *ngIf="eventForm.get('eventName')?.invalid && eventForm.get('eventName')?.touched">
+                            <small class="error" *ngIf="eventForm.get('eventName')?.errors?.['required']"> Please enter
+                                Name
+                            </small>
+                          
+                            <small *ngIf="eventForm.get('eventName')?.errors?.['maxlength']"> Name should have at most 50
+                                characters
+                            </small>
+                            <small class="error" *ngIf="eventForm.get('eventName')?.errors?.['pattern']">Invalid
+                                Name</small>
+                        </div>
+                    </div> 
+                    
+                    <div>
+                      <label>Event Address:<sup class="sup">*</sup></label>
+                      <input type="text" class="form-control" formControlName="eventAddress" required maxlength="50"
+                          pattern="[A-Za-z ]+" placeholder="please enter the eventAddress" />
+                      <div *ngIf="eventForm.get('eventAddress')?.invalid && eventForm.get('eventAddress')?.touched">
+                          <small class="error" *ngIf="eventForm.get('eventAddress')?.errors?.['required']"> Please enter
+                            Event Address
+                          </small>
+                      
+                          <small *ngIf="eventForm.get('eventAddress')?.errors?.['maxlength']"> Name should have at most 50
+                              characters
+                          </small>
+                          <small class="error" *ngIf="eventForm.get('eventAddress')?.errors?.['pattern']">Invalid
+                              Name</small>
+                      </div>
+                  </div>
+                  <div>
+                    <label>Event Date:<sup class="sup">*</sup></label>
+
+                    <input type="date"[min]="minDate" class="form-control" formControlName="eventDate" required placeholder="please enter the eventDate" />
+                 
+                 
+                </div>
+
+                  
+                    <div class="row">
+                        <div class="col">
+                            <button type="submit">Submit</button>
+                        </div>
+                      
+                    </div>
+
+                </form>
+            </div>
+        </div>
+
+    </div>
+</body>
+
+</html>

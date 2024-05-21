@@ -1,0 +1,61 @@
+*{
+  font-family: sans-serif,'Times New Roman', Times;
+}
+.fli{
+  text-align: start;
+   list-style-type: none;
+  
+    margin-bottom: 10px;
+    /* Adjust the indentation as needed */
+    padding-left: 80px;
+
+   
+}
+.fli:hover,.fli1:hover{
+    color:rgb(239, 234, 235);
+    padding-right: 4px ;
+
+}
+
+.ful{
+    
+    font-weight: bolder;
+    color:rgb(254, 249, 249);
+    font-size: larger;
+  }
+
+.cnter{
+    text-align: center;
+    font-size: medium;
+}
+.clr{
+  background-color: rgb(4, 4, 84);
+  margin-top: 20px;
+  position: relative;
+  top:-20px;
+ 
+  
+
+}
+.icns{
+    text-align: center;
+  }
+  .bi-telephone,.bi-geo-alt{
+    font-size: 20px;
+  }
+  @media screen and (max-width: 500px) {
+    .fli{
+      text-align: start;
+       list-style-type: none;
+      
+        margin-bottom: 10px;
+        /* Adjust the indentation as needed */
+        padding-left: 120px;
+    
+       
+    }
+    
+  }
+  
+  
+  
